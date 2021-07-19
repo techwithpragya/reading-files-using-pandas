@@ -1,0 +1,28 @@
+#reading all files in the folder at once
+
+#import os
+
+import glob
+
+import pandas as pd
+
+ 
+
+all_data = pd.DataFrame()
+
+for f in glob.glob("C:\\Users\\user1\\Desktop\\data\\*.xlsx"):
+
+    df = pd.read_excel(f, 'Sheet1')
+
+    all_data = all_data.append(df,ignore_index=True)
+
+ 
+
+all_data = all_data.dropna(how='all')
+
+ 
+
+all_data = all_data.dropna(how='all', axis=1)
+
+all_data.to_csv("C:\\Users\\user1\\Desktop\\all_data.csv")
+
